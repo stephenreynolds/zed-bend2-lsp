@@ -23,12 +23,18 @@ supported.
 
 ## Requirements
 
-Install Bend and make sure `bend` is on your `PATH`. The language server runs
-`bend <file> --check-only` to produce diagnostics.
+- **Bend 2**, with `bend` on your `PATH`. The language server runs
+  `bend <file> --check-only` to produce diagnostics.
 
-```sh
-curl -fsSL https://bend-lang.com/install.sh | sh
-```
+  ```sh
+  curl -fsSL https://bend-lang.com/install.sh | sh
+  ```
+
+- **[bend2-lsp](https://github.com/IlyaGulya/bend2-lsp-rs)**, the language
+  server. You don't have to install it yourself: if it isn't on your `PATH`,
+  the extension downloads it on first use (see [Language server](#language-server)).
+  Without it you still get highlighting, outline, snippets and run buttons,
+  but no diagnostics, completion, hover, navigation or formatting.
 
 ## Language server
 
