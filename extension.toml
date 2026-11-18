@@ -1,0 +1,19 @@
+id = "bend"
+name = "Bend"
+version = "0.1.0"
+schema_version = 1
+authors = ["Stephen Reynolds"]
+description = "Bend 2 support: syntax highlighting, outline, run buttons, snippets, and the bend2-lsp language server."
+repository = "https://github.com/stephenreynolds/zed-bend2-lsp"
+snippets = ["./snippets/bend.json"]
+
+[grammars.bend2]
+repository = "https://github.com/Soulthym/tree-sitter-bend2"
+rev = "997ec087147eb996731cc542ab4931b97049d2a1"
+
+[language_servers.bend2-lsp]
+name = "bend2-lsp"
+languages = ["Bend"]
+
+[language_servers.bend2-lsp.language_ids]
+"Bend" = "bend"

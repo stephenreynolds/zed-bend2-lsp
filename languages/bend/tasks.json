@@ -1,0 +1,25 @@
+[
+  {
+    "label": "bend: run $ZED_FILENAME",
+    "command": "bend",
+    "args": ["$ZED_FILE"],
+    "tags": ["bend-main"]
+  },
+  {
+    "label": "bend: check $ZED_FILENAME",
+    "command": "bend",
+    "args": ["$ZED_FILE", "--check-only"],
+    "tags": ["bend-law"]
+  },
+  {
+    "label": "bend: verdict $ZED_FILENAME (recheck with the proven kernel)",
+    "command": "bend",
+    "args": ["$ZED_FILE", "--verdict"],
+    "tags": ["bend-law"]
+  },
+  {
+    "label": "bend: build $ZED_FILENAME to a native binary",
+    "command": "bend",
+    "args": ["$ZED_FILE", "-o", "$ZED_DIRNAME/$ZED_STEM"]
+  }
+]

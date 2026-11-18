@@ -1,0 +1,8 @@
+("(" @open ")" @close)
+(arguments (gpu_call "(" @open) ")" @close)
+("[" @open "]" @close)
+("{" @open "}" @close)
+(type_application "<" @open ">" @close .)
+(type_parameters "<" @open ">" @close .)
+(do_expression "<" @open ">" @close ":")
+((string "\"" @open "\"" @close) (#set! rainbow.exclude))

@@ -1,0 +1,136 @@
+{
+  "Import Base": {
+    "prefix": "base",
+    "body": ["import Base"],
+    "description": "Import the prelude"
+  },
+  "Import module": {
+    "prefix": "import",
+    "body": ["import ./${1:file}.bend as ${2:M}"],
+    "description": "Import a module under a local alias"
+  },
+  "Definition": {
+    "prefix": "def",
+    "body": ["def ${1:name}(${2:x}: ${3:A}) -> ${4:T}:", "\t$0"],
+    "description": "A typed definition"
+  },
+  "Unsafe definition": {
+    "prefix": "unsafe",
+    "body": ["@unsafe def ${1:name}(${2:x}: ${3:A}) -> ${4:T}:", "\t$0"],
+    "description": "A definition that skips the termination check"
+  },
+  "Main (IO)": {
+    "prefix": "main",
+    "body": ["def main() -> IO(Unit):", "\tdo IO<Unit>:", "\t\t$0"],
+    "description": "An entry point that runs effects"
+  },
+  "Main (value)": {
+    "prefix": "mainv",
+    "body": ["def main() -> ${1:U32}:", "\t$0"],
+    "description": "An entry point that returns a value"
+  },
+  "Datatype": {
+    "prefix": "type",
+    "body": ["type ${1:Name} is ${2:Data}:", "\t${3:Ctor}{${4:field}: ${5:A}}"],
+    "description": "A datatype with one constructor per line"
+  },
+  "Law": {
+    "prefix": "law",
+    "body": ["law ${1:name}:", "\tfor ${2:x}: ${3:A}", "\t${0:claim}"],
+    "description": "A claim, proven by a def of the same name"
+  },
+  "Proof": {
+    "prefix": "proof",
+    "body": ["def ${1:name}(${2:x}):", "\t${0:?TODO}"],
+    "description": "A def that fills the law of the same name"
+  },
+  "Foreign effect": {
+    "prefix": "foreign",
+    "body": [
+      "def ${1:name}(${2:x}: ${3:A}) -> IO(${4:B}):",
+      "\timport \"./${5:effect}.c\"",
+      "\timport \"./${5:effect}.js\""
+    ],
+    "description": "An effect implemented in C and JavaScript"
+  },
+  "Match": {
+    "prefix": "match",
+    "body": ["match ${1:x}:", "\tcase ${2:pattern}:", "\t\t$0"],
+    "description": "Match on a parameter or bound variable"
+  },
+  "Match Nat": {
+    "prefix": "matchn",
+    "body": ["match ${1:n}:", "\tcase 0n:", "\t\t$2", "\tcase 1n+${3:p}:", "\t\t$0"],
+    "description": "Match on zero and successor"
+  },
+  "Match List": {
+    "prefix": "matchl",
+    "body": ["match ${1:xs}:", "\tcase Nil{}:", "\t\t$2", "\tcase Con{${3:h}, ${4:t}}:", "\t\t$0"],
+    "description": "Match on the empty list and cons"
+  },
+  "Match Bool": {
+    "prefix": "matchb",
+    "body": ["match ${1:b}:", "\tcase True{}:", "\t\t$2", "\tcase False{}:", "\t\t$0"],
+    "description": "Match on True and False (Bend has no if)"
+  },
+  "Match Maybe": {
+    "prefix": "matchm",
+    "body": ["match ${1:m}:", "\tcase None{}:", "\t\t$2", "\tcase Some{${3:x}}:", "\t\t$0"],
+    "description": "Match on None and Some"
+  },
+  "Case": {
+    "prefix": "case",
+    "body": ["case ${1:pattern}:", "\t$0"],
+    "description": "A match arm"
+  },
+  "Do block": {
+    "prefix": "do",
+    "body": ["do ${1:IO}<${2:Unit}>:", "\t$0"],
+    "description": "A monadic block"
+  },
+  "Bind": {
+    "prefix": "bind",
+    "body": ["${1:x} : ${2:A} <- ${0:m}"],
+    "description": "Bind the result of a step in a do block"
+  },
+  "Typed let": {
+    "prefix": "let",
+    "body": ["${1:x} : ${2:A} = ${0:v}"],
+    "description": "Bind a pure value in a do block"
+  },
+  "Lambda": {
+    "prefix": "lam",
+    "body": ["${1:x} => ${0:body}"],
+    "description": "A lambda"
+  },
+  "Operators": {
+    "prefix": "op",
+    "body": ["(${1:a} ${2:+} ${3:b} : ${4:U32})"],
+    "description": "Operators need the type they work over"
+  },
+  "Annotation": {
+    "prefix": "ann",
+    "body": ["{${1:x} : ${2:T}}"],
+    "description": "Annotate an expression with its type"
+  },
+  "Equality": {
+    "prefix": "eq",
+    "body": ["{${1:a} == ${2:b} : ${3:T}}"],
+    "description": "An equality type"
+  },
+  "Rewrite": {
+    "prefix": "rewrite",
+    "body": ["%${1:proof} : ${2:motive}", "$0"],
+    "description": "Rewrite the goal with an equality"
+  },
+  "Array": {
+    "prefix": "array",
+    "body": ["[${1:0} : ${2:U32}*${3:8n}]"],
+    "description": "An array of n copies of a value"
+  },
+  "Print": {
+    "prefix": "print",
+    "body": ["IO.print(${1:\"$2\"})"],
+    "description": "Print a line"
+  }
+}

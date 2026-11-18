@@ -1,0 +1,13 @@
+[package]
+name = "zed_bend"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+sha2 = "0.10"
+zed_extension_api = "0.7.0"
